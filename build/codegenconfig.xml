@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="codegen.xsd">
+	<variables>
+		<variable name="developer" value="yx" />
+		<variable name="email" value="cz@efssp.com"/>
+		<variable name="company" value="苏州全誉软件有限公司" />
+	</variables>
+	
+	<templates>
+		<template id="entity" path="entity.ftl"/>
+		<template id="dao" path="dao.ftl"/>
+		<template id="daoImpl" path="daoImpl.ftl"/>
+		<template id="manager"  path="manager.ftl"/>
+		<template id="managerImpl"  path="managerImpl.ftl"/>
+		<template id="daoTest"  path="daoTest.ftl"/>
+		<template id="baseTest"  path="baseTest.ftl"/>
+		<template id="managerTest"  path="managerTest.ftl"/>
+		<template id="mapping"  path="mapping.ftl"/>
+		<template id="get"  path="get.jsp"/>
+		<template id="edit"  path="edit.jsp"/>
+		<template id="list"  path="list.jsp"/>
+		<template id="controller"  path="controller.ftl"/>
+		
+		<template id="getNg"  path="getNg.jsp"/>
+		<template id="ngEdit"  path="ngEdit.ftl"/>
+		<template id="listJs"  path="listJs.jsp"/>
+		<template id="controllerNG"  path="controllerNg.ftl"/>
+		<template id="getController"  path="getController.js"/>
+		<template id="editController"  path="editController.js"/>
+		
+		<template id="mycatschema"  path="schema.xml"/>
+		
+		
+		
+	</templates>
+	
+		<!-- 
+	<files baseDir="D:\workspace\efssp-platform" >
+		<file refTemplate="mapping" filename="{class}.map.xml" dir="src\main\resources\com\quanyu\{system}\{package}\mapping"  sub="true"  override="true"/>
+		<file refTemplate="entity" filename="{class}.java" dir="src\main\java\com\quanyu\{system}\{package}\model"  sub="true" override="true"/>
+		<file refTemplate="dao" filename="{class}Dao.java" dir="src\main\java\com\quanyu\{system}\{package}\dao" sub="true"  override="true"/>
+		<file refTemplate="daoImpl" filename="{class}DaoImpl.java" dir="src\main\java\com\quanyu\{system}\{package}\dao\impl" sub="true"  override="true"/>
+		<file refTemplate="manager" filename="{class}Manager.java" dir="src\main\java\com\quanyu\{system}\{package}\manager" sub="false"  override="true"/>
+		<file refTemplate="managerImpl" filename="{class}ManagerImpl.java" dir="src\main\java\com\quanyu\{system}\{package}\manager\impl" sub="false"  override="true"/>
+		<file refTemplate="daoTest" filename="{class}DaoTest.java" dir="src\test\java\com\quanyu\{system}\{package}\dao" sub="false"  override="true"/>
+		<file refTemplate="managerTest" filename="{class}ManagerTest.java" dir="src\test\java\com\quanyu\{system}\{package}\manager" sub="false"  override="true"/>
+		<file refTemplate="baseTest" filename="{baseClass}BaseTest.java" dir="src\test\java\com\quanyu\{system}\{package}" sub="false"  override="true"/>
+	</files>
+	 -->
+	
+	<files baseDir="D:/code" >
+		
+		<file refTemplate="mapping" filename="{class}.map.xml" dir="src\main\resources\com\quanyu\{system}\persistence\mapping"  sub="true"  override="true"/>
+		<file refTemplate="entity" filename="{class}.java" dir="src\main\java\com\quanyu\{system}\persistence\model"  sub="true" override="true"/>
+		<file refTemplate="dao" filename="{class}Dao.java" dir="src\main\java\com\quanyu\{system}\persistence\dao" sub="true"  override="true"/>
+		<file refTemplate="daoImpl" filename="{class}DaoImpl.java" dir="src\main\java\com\quanyu\{system}\persistence\dao\impl" sub="true"  override="true"/>
+		<file refTemplate="manager" filename="{class}Manager.java" dir="src\main\java\com\quanyu\{system}\persistence\manager" sub="false"  override="true"/>
+		<file refTemplate="managerImpl" filename="{class}ManagerImpl.java" dir="src\main\java\com\quanyu\{system}\persistence\manager\impl" sub="false"  override="true"/>
+
+		<file refTemplate="controllerNG" filename="{class}Controller.java" dir="\src\main\java\com\quanyu\{system}\controller"  override="true"/>
+		<file refTemplate="ngEdit" filename="{classVar}Edit.jsp" dir="src\main\webapp\WEB-INF\view\{system}\{package}\{classVar}"   override="true"/>
+		<file refTemplate="listJs" filename="{classVar}List.jsp" dir="src\main\webapp\WEB-INF\view\{system}\{package}\{classVar}"  override="true"/>
+		<file refTemplate="getNg" filename="{classVar}Get.jsp" dir="src\main\webapp\WEB-INF\view\{system}\{package}\{classVar}" override="true"/>
+		<file refTemplate="getController" filename="{classVar}GetController.js" dir="src\main\webapp\js\{system}\{package}\{classVar}" override="true"/>
+		<file refTemplate="editController" filename="{classVar}EditController.js" dir="src\main\webapp\js\{system}\{package}\{classVar}" override="true"/>
+		 
+	</files>
+
+
+
+<!--	<table tableName="gc_work_checks_zg_yz_log">
+		<variable name="class" value="GcWorkChecksZgYsLog" />
+		<variable name="package" value="gc" />
+		<subtable tablename="gc_work_checks_zg" foreignKey="zg_id">
+			<variable name="class" value="GcWorkChecksZG" />
+			<variable name="package" value="gc" />
+		</subtable>
+        <subtable tablename="gc_work_checks_yz" foreignKey="yz_id">
+            <variable name="class" value="GcWorkChecksYZ" />
+            <variable name="package" value="gc" />
+        </subtable>
+	</table>-->
+
+	<table tableName="gc_area_demension">
+            <variable name="class" value="GcAreaDemension" />
+            <variable name="package" value="gc" />
+        </table>
+	
+
+
+	<!--<&#45;&#45;
+	<genAll>
+		<file refTemplate="mycatschema" dir="D:\temp\x5" filename="schema.xml" genMode="SingleFile"></file>
+	</genAll>
+	
+	<genAll>
+		<file refTemplate="mycatschema" dir="D:\temp\x5" filename="schema.xml" genMode="SingleFile"></file>
+	</genAll>
+	<table tableName="demo_main" >
+		<variable name="class" value="DemoMain" />
+		<variable name="package" value="demo" />
+		
+		<subtable tablename="demo_sub" foreignKey="mainId">
+			<variable name="class" value="DemoSub" />
+			<variable name="package" value="demo" />
+		</subtable>
+	</table>
+	&ndash;&gt;
+	-->
+	
+	
+
+</config>

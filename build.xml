@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="打包代码生成器">
+
+
+	<property name="lib.dir" location="refLib" />
+	<property name="src.dir" location="src" />
+	<property name="bin.dir" location="bin" />
+	<property name="build.dir" location="build" />
+	<property name="doc.dir" location="build/doc" />
+
+
+	<!--引用的jar包 -->
+	<path id="libRef">
+		<fileset dir="${lib.dir}" includes="*.jar" />
+	</path>
+
+	<target name="打包代码生成器" description="打包代码生成器">
+		<!-- 生成bulid文档 -->
+		<delete dir="${build.dir}" />
+		<delete file="" />
+
+		<!-- 拷贝xml和schema文件到bulid文件夹 -->
+		<      copy todir="${build.dir}">
+			<fileset dir="${src.dir}/com/quanyu/cgm/xsd" includes="*.xsd">
+			</fileset>
+			<fileset dir="${src.dir}" includes="*.xml">
+			</fileset>
+		</copy>
+		<!-- 拷贝schema文件到classes目录 -->
+		<copy todir="${bin.dir}/classes">
+			<fileset dir="${src.dir}/com/quanyu/cgm/xsd" includes="*.xsd">
+			</fileset>
+		</copy>
+		<!-- 拷贝jar包 -->
+		<copy todir="${build.dir}/refLib">
+			<fileset dir="${lib.dir}" includes="*.jar">
+			</fileset>
+		</copy>
+		<!-- 拷贝模版文件到bulid文件夹 -->
+		<copy todir="${build.dir}/template">
+			<fileset dir="${src.dir}/template" includes="*.*">
+			</fileset>
+		</copy>
+		<!-- 拷贝doc文档 -->
+		<copy todir="${doc.dir}">
+			<fileset dir="${src.dir}/doc" includes="*.doc">
+			</fileset>
+		</copy>
+		<!-- 编译生成class文件 -->
+		<javac srcdir="${src.dir}" destdir="${bin.dir}/classes"
+			classpathref="libRef" debug="false" optimize="true" encoding="UTF-8">
+		</javac>
+		<!-- 将class文件打包 -->
+		<jar destfile="${build.dir}/refLib/codegen.jar" basedir="${bin.dir}/classes">
+
+		</jar>
+
+		<!-- 生成javadoc文档 
+		<javadoc destdir="${doc.dir}/javadoc" encoding="GBK"
+			docencoding="GBK">
+			<packageset dir="${src.dir}">
+				<include name="com/quanyu/cgm/db/**" />
+				<include name="com/quanyu/cgm/model/**" />
+			</packageset>
+		</javadoc>
+		-->
+		<!-- 浏览javadoc文档 
+		<open-html-page url="${doc.dir}/javadoc/index.html" />
+		-->
+	</target>
+	<!-- 打开浏览器的命令 -->
+	<macrodef name="open-html-page">
+		<attribute name="url" />
+		<sequential>
+			<exec executable="cmd"
+				os="Windows Vista, Windows XP,Windows 2000,Windows 98"
+				failifexecutionfails="false" failonerror="false">
+				<arg value="/C start &quot;${windows.browser}&quot; &quot;@{url}&quot;" />
+			</exec>
+			<exec executable="${macos.browser}" os="Mac OS X"
+				failifexecutionfails="false" failonerror="false">
+				<arg value="@{url}" />
+			</exec>
+			<exec executable="${linux.browser}" os="Linux"
+				failifexecutionfails="false" failonerror="false">
+				<arg value="@{url}" />
+			</exec>
+		</sequential>
+	</macrodef>
+</project>

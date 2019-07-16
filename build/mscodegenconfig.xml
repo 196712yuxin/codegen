@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="codegen.xsd">
+	<charset>UTF-8</charset>
+	<database dbHelperClass="com.quanyu.cgm.db.impl.MySqlHelper" url="jdbc:mysql://localhost:3306/efssp?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round" username="root" password="root"/>
+	
+	<variables>
+		<variable name="developer" value="quanyu" />
+		<variable name="company" value="全誉" />
+	</variables>
+	<templates basepath="D:\workspace\codegen\src\com\quanyu\cgm\mstemplate">
+		<template id="mapper" path="msmapper.ftl"/>
+		<template id="model" path="msmodel.ftl"/>
+		<template id="dao" path="msdao.ftl"/>
+		<template id="service"  path="msservice.ftl"/>
+		<template id="formController" path="msformController.ftl"/>
+		<template id="controller"  path="msController.ftl"/>
+		<template id="list"  path="mslist.jsp"/>
+		<template id="get"  path="msGet.jsp"/>
+		<template id="edit"  path="msEdit.jsp"/>
+		<template id="formValid" path="formValid.ftl" />
+		<template id="formproperties" path="formproperties.ftl" />
+	</templates>
+	
+	<files baseDir="D:\workspace\bpm" >
+		<file refTemplate="mapper" filename="{class}.map.xml" dir="src\main\resources\com\quanyu\platform\maper"  sub="true"/>
+		<file refTemplate="model" filename="{class}.java" dir="src\main\java\com\quanyu\platform\model\{package}"  sub="true"/>
+		<file refTemplate="dao" filename="{class}Dao.java" dir="src\main\java\com\quanyu\platform\dao\{package}" sub="true"/>
+		<file refTemplate="service" filename="{class}Service.java" dir="src\main\java\com\quanyu\platform\service\{package}" sub="true"/>
+		<file refTemplate="formController" filename="{class}FormController.java" dir="src\main\java\com\quanyu\platform\controller\{package}"/>
+		<file refTemplate="controller" filename="{class}Controller.java" dir="src\main\java\com\quanyu\platform\controller\{package}"/>
+		<file refTemplate="list" filename="{classVar}List.jsp" dir="src\main\webapp\WEB-INF\view\platform\{package}"/>
+		<file refTemplate="get" filename="{classVar}Get.jsp" dir="src\main\webapp\WEB-INF\view\platform\{package}"/>
+		<file refTemplate="edit" filename="{classVar}Edit.jsp" dir="src\main\webapp\WEB-INF\view\platform\{package}"/>
+		<file refTemplate="formValid" filename="formValid.xml" dir="src\main\resources\conf\valid" append="true" insertTag="&lt;/formset&gt;" startTag="&lt;!--start_{tabname}--&gt;" endTag="&lt;!--end_{tabname}--&gt;" />
+		<file refTemplate="formproperties" filename="form_zh_CN.properties" dir="src\main\resources\resource" append="true" insertTag="#insertbefore" startTag="#start_{tabname}" endTag="#end_{tabname}"/>
+	</files>
+	
+	
+	<table tableName="SCHOOL" >
+		<variable name="class" value="School" />
+		<variable name="classVar" value="school" />
+		<variable name="package" value="ms" />
+		<variable name="path" value="ms" />
+		<subtable tablename="STUDENT" foreignKey="schoolId">
+			<variable name="class" value="Student" />
+			<variable name="classVar" value="student" />
+			<variable name="package" value="ms" />
+			<variable name="path" value="ms" />
+		</subtable>
+		<subtable tablename="TEACHER" foreignKey="schoolId">
+			<variable name="class" value="Teacher" />
+			<variable name="classVar" value="teacher" />
+			<variable name="package" value="ms" />
+			<variable name="path" value="ms" />
+		</subtable>
+	</table>
+
+</config>
